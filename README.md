@@ -107,10 +107,10 @@ pip install -r requirements.txt
 | Method     | Train data | COCO  | ArT    | Uber   | | Checkpoint |
 |------------|------------|-------|--------|--------|-|--------|
 |            |            | 9,825 | 35,149 | 80,551 | | |
-|CLIP4STR-B  | MJ+ST      | 66.69 | 72.82  | 43.52  | | [a5e3386222](TODO) |
-|CLIP4STR-L  | MJ+ST      | 67.45 | 73.48  | 44.59  | | [3544c362f0](TODO) |
-|CLIP4STR-B  | Real(3.3M) | 80.80 | 85.74  | 86.70  | | [d70bde1f2d](TODO) |
-|CLIP4STR-L  | Real(3.3M) | 81.97 | 85.83  | 87.36  | | [f125500adc](TODO) |
+|CLIP4STR-B  | MJ+ST      | 66.69 | 72.82  | 43.52  | | [a5e3386222](https://github.com/VamosC/CLIP4STR/releases/download/1.0.0/clip4str_base16x16_synth_a5e3386222.ckpt) |
+|CLIP4STR-L  | MJ+ST      | 67.45 | 73.48  | 44.59  | | [3544c362f0](https://zenodo.org/record/8369439) |
+|CLIP4STR-B  | Real(3.3M) | 80.80 | 85.74  | 86.70  | | [d70bde1f2d](https://github.com/VamosC/CLIP4STR/releases/download/1.0.0/clip4str_base16x16_d70bde1f2d.ckpt) |
+|CLIP4STR-L  | Real(3.3M) | 81.97 | 85.83  | 87.36  | | [f125500adc](https://zenodo.org/record/8369439) |
 
 
 ## Training
