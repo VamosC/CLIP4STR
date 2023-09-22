@@ -1,0 +1,60 @@
+name: vl4str
+_target_: strhub.models.vl_str.system.VL4STR
+
+# Data
+img_size: [224, 224]
+patch_size: [16, 16]  # [ height, width ]
+
+# Architecture
+embed_dim: 512
+enc_num_heads: 12
+enc_mlp_ratio: 4
+enc_depth: 12
+enc_width: 768
+dec_num_heads: 8
+dec_mlp_ratio: 4
+dec_depth: 1
+enc_del_cls: false
+dec_ndim_no_decay: true
+context_length: 16
+use_language_model: true
+image_detach: true
+type_embedding: false
+cross_gt_context: true
+cross_cloze_mask: false
+cross_extra_attn: false
+cross_correct_once: false
+cross_loss_w: 1.0
+# cross_logit_w: 1.0
+itm_loss: false
+itm_loss_weight: 0.1
+cross_token_embeding: false
+fusion_model: false
+# freeze_layer_num: -1
+image_freeze_nlayer: -1
+text_freeze_nlayer: 6
+image_freeze_layer_divisor: 0
+image_only_fc: false
+use_share_dim: true
+
+# Training
+lr: 8.4e-5
+weight_decay: 0.2
+coef_lr: 19.0
+coef_wd: 1.0
+perm_num: 6
+perm_forward: true
+perm_mirrored: true
+dropout: 0.1
+
+# Decoding mode (test)
+decode_ar: true
+refine_iters: 1
+# clip_refine: false
+
+
+# pretrained
+freeze_backbone: false
+freeze_language_backbone: false
+clip_pretrained: /PATH/TO/CLIP/MODEL
+find_unused_parameters: true

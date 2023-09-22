@@ -1,0 +1,23 @@
+defaults:
+  - main
+  - _self_
+
+trainer:
+  gpus: 1  # tuning with DDP is not yet supported.
+
+tune:
+  num_samples: 10
+  gpus_per_trial: 1
+  lr:
+    min: 3e-5
+    max: 3e-4
+  coef_lr:
+    min: 1.0
+    max: 20.0
+  resume_dir: null
+
+hydra:
+  run:
+    # dir: ray_results/${model.name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+    # use absolute dir here for full control
+    dir: output/${model.name}_${now:%Y-%m-%d}_${now:%H-%M-%S}

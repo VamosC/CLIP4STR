@@ -1,0 +1,35 @@
+name: str_adapter
+_target_: strhub.models.str_adapter.system.STRAdapter
+
+# Data
+img_size: [64, 256]
+patch_size: [8, 16]  # [ height, width ]
+
+# Architecture
+embed_dim: 512
+dec_num_heads: 8
+dec_mlp_ratio: 4
+dec_depth: 1
+adapter_type: linear
+block_ids: [0, 4, 8, 11]
+prune_reduction: 4
+
+# Training
+lr: 8.4e-5
+weight_decay: 0.2
+coef_lr: 19.0
+coef_wd: 1.0
+perm_num: 6
+perm_forward: true
+perm_mirrored: true
+dropout: 0.1
+
+# Decoding mode (test)
+decode_ar: true
+refine_iters: 1
+# clip_refine: false
+
+# pretrained
+freeze_backbone: true
+clip_pretrained: None
+find_unused_parameters: true

@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - override /model: parseq
+
+model:
+  name: parseq-base
+  
+  img_size: [ 224, 224 ]  # [ height, width ]
+  patch_size: [ 16, 16 ]  # [ height, width ]
+
+  embed_dim: 768
+  enc_num_heads: 12
+  dec_num_heads: 8
+  # https://github.com/rwightman/pytorch-image-models/blob/main/timm/models/vision_transformer.py
+  # https://dl.fbaipublicfiles.com/deit/deit_base_patch16_224-b5f2ef4d.pth
+  # imagenet21k_pretrained: deit_base_patch16_224-b5f2ef4d.zip
+  # https://miil-public-eu.oss-eu-central-1.aliyuncs.com/model-zoo/ImageNet_21K_P/models/vit_base_patch16_224_miil_21k.pth
+  # imagenet21k_pretrained: vit_base_patch16_224_miil_21k.pth
