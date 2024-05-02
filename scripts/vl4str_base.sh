@@ -1,12 +1,10 @@
 #!/bin/bash
 
 ### training on real dataset
-python ../train.py +experiment=vl4str model=vl4str dataset=real \
-                    trainer.max_epochs=16 trainer.gpus=8 \
-                    model.lr=8.4e-5 \
-                    model.batch_size=128
-#                     trainer.accumulate_grad_batches=2
-
+# python ../train.py +experiment=vl4str model=vl4str dataset=real \
+#                     trainer.max_epochs=16 trainer.gpus=8 \
+#                     model.lr=8.4e-5 \
+#                     model.batch_size=128
 
 ### training on synthetic dataset
 # python ../train.py +experiment=vl4str model=vl4str dataset=synth \
@@ -19,6 +17,16 @@ python ../train.py +experiment=vl4str model=vl4str dataset=real \
 # python ../train.py +experiment=vl4str-b32 model=vl4str dataset=real \
 #                     trainer.gpus=4 trainer.max_epochs=16 \
 #                     model.lr=8.4e-5 model.batch_size=256
+
+
+### Commands of Shuai to train a CLIP4STR-B model with OpenCLIP weights on RBU(6.5M)
+# export CUDA_VISIBLE_DEVICES=4,5,6,7
+python ../train.py +experiment=vl4str model=vl4str dataset=real \
+                    data.root_dir=/home/shuai/dataset/str_dataset_ub \
+                    trainer.max_epochs=11 trainer.gpus=4 \
+                    model.lr=8.4e-5 model.batch_size=256 \
+                    model.clip_pretrained=/home/shuai/pretrained/clip/OpenCLIP-ViT-B-16-DataComp-XL-s13B-b90K.bin \
+                    trainer.accumulate_grad_batches=1
 
 
 # loading checkpoint from clip/ViT-B-16.pt
