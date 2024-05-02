@@ -36,6 +36,7 @@ text_freeze_nlayer: 6
 image_freeze_layer_divisor: 0
 image_only_fc: false
 use_share_dim: true
+clip_cls_eot_feature: false
 
 # Training
 lr: 8.4e-5

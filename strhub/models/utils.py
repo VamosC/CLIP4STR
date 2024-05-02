@@ -67,6 +67,8 @@ def _get_model_class(key):
             exp = 'vl4str-large'
         if 'base32x32' in key:
             exp = 'vl4str-base32'
+        if 'huge' in key:
+            exp = 'vl4str-huge'
 
     elif 'str_adapter' in key:
         from .str_adapter.system import STRAdapter as ModelClass

@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - override /model: vl4str
+
+model:
+  img_size: [ 224, 224 ]      # [ height, width ]
+  patch_size: [ 14, 14 ]      # [ height, width ]
+
+  # Training
+  lr: 8.4e-5
+
+  dec_num_heads: 8
+  dec_mlp_ratio: 4
+  dec_depth: 1
+
+  # Note: /PUT/YOUR/PATH/HERE
+  clip_pretrained: /home/shuai/pretrained/clip/OpenCLIP-ViT-H-14-laion2B-s32B-b79K.bin

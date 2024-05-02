@@ -1,15 +1,24 @@
 #!/bin/bash
 ### training on real dataset
-python ../train.py +experiment=vl4str-large model=vl4str dataset=real \
-                    model.lr=8.4e-5 model.batch_size=48  \
-                    trainer.accumulate_grad_batches=5 trainer.max_epochs=10 trainer.gpus=4 \
-                    trainer.val_check_interval=10000
+# python ../train.py +experiment=vl4str-large model=vl4str dataset=real \
+#                     model.lr=8.4e-5 model.batch_size=48  \
+#                     trainer.accumulate_grad_batches=5 trainer.max_epochs=10 trainer.gpus=4 \
+#                     trainer.val_check_interval=10000
 
 ### training on synthetic dataset
 # python ../train.py +experiment=vl4str-large model=vl4str dataset=synth \
 #                     model.lr=8.4e-5 model.batch_size=48  \
 #                     trainer.accumulate_grad_batches=5 trainer.max_epochs=6 trainer.gpus=4 \
 #                     trainer.val_check_interval=10000
+
+### Commands of Shuai to train a CLIP4STR-L model with OpenCLIP weights on RBU(6.5M)
+# export CUDA_VISIBLE_DEVICES=4,5,6,7
+python ../train.py +experiment=vl4str-large model=vl4str dataset=real \
+                    data.root_dir=/home/shuai/dataset/str_dataset_ub \
+                    model.lr=8.4e-5 model.batch_size=64  \
+                    trainer.accumulate_grad_batches=4 trainer.max_epochs=5 trainer.gpus=4 \
+                    trainer.val_check_interval=10000 \
+                    model.clip_pretrained=/home/shuai/pretrained/clip/OpenCLIP-ViT-L-14-DataComp-XL-s13B-b90K.bin
 
 
 # loading checkpoint from clip/ViT-L-14.pt
@@ -37,7 +46,3 @@ python ../train.py +experiment=vl4str-large model=vl4str dataset=real \
 # 80.5 M    Non-trainable params
 # 446 M     Total params
 # 1,787.445 Total estimated model params size (MB)
-
-
-
-

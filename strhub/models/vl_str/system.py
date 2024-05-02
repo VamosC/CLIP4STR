@@ -19,7 +19,11 @@ from .modules import DecoderLayer, Decoder, modify_attn_mask
 
 
 # an alternative choice when the input argument is not valid 
-CLIP_PATH = '/PUT/YOUR/PATH/HERE/pretrained/clip'
+# CLIP_PATH = '/PUT/YOUR/PATH/HERE/pretrained/clip''
+CLIP_PATH = '/home/shuai/pretrained/clip'
+if not os.path.exists(CLIP_PATH):
+    CLIP_PATH = '/home/shuzhao/Data/pretrained/clip'
+assert os.path.exists(CLIP_PATH)
 
 
 class VL4STR(CrossEntropySystem):
@@ -53,20 +57,23 @@ class VL4STR(CrossEntropySystem):
         self.image_detach = kwargs["image_detach"] if "image_detach" in kwargs.keys() else True
         self.cross_token_embeding = kwargs["cross_token_embeding"] if "cross_token_embeding" in kwargs.keys() else False
         self.cross_fast_decode = False
+        self.clip_cls_eot_feature = kwargs["clip_cls_eot_feature"] if "clip_cls_eot_feature" in kwargs.keys() else False
 
         rank_zero_info("\n config of VL4STR: \n"
                 "\t image_freeze_nlayer: {}, text_freeze_nlayer: {}, freeze_language_backbone: {}, freeze_image_backbone: {} \n"
                 "\t use_language_model: {}, context_length: {}, cross_token_embeding: {}, cross_loss_weight: {} \n"
-                "\t use_share_dim: {}, image_detach: {} \n"
+                "\t use_share_dim: {}, image_detach: {}, clip_cls_eot_feature: {} \n"
                 "\t cross_gt_context: {}, cross_cloze_mask: {}, cross_fast_decode: {} \n".format(
                 self.image_freeze_nlayer, self.text_freeze_nlayer, self.freeze_language_backbone, self.freeze_image_backbone,
                 self.use_language_model, self.context_length,  self.cross_token_embeding, self.cross_loss_w,
-                self.use_share_dim, self.image_detach, self.cross_gt_context, self.cross_cloze_mask, self.cross_fast_decode)
+                self.use_share_dim, self.image_detach, self.clip_cls_eot_feature,
+                self.cross_gt_context, self.cross_cloze_mask, self.cross_fast_decode)
                 )
 
         assert "clip_pretrained" in kwargs.keys()
         if not os.path.exists(kwargs["clip_pretrained"]):
             kwargs["clip_pretrained"] = os.path.join(CLIP_PATH, os.path.basename(kwargs["clip_pretrained"]))
+            print(">>> Try to load CLIP model from {}".format(kwargs["clip_pretrained"]))
             assert os.path.exists(kwargs["clip_pretrained"])
         # load CLIP model
         clip_model, _ = clip.load(name=kwargs["clip_pretrained"], device='cpu')
@@ -107,11 +114,11 @@ class VL4STR(CrossEntropySystem):
         """extract CLIP image features"""
         if self.freeze_image_backbone:
             with torch.no_grad():
-                memory = self.clip_model.encode_image(img, projection=self.use_share_dim)
+                memory = self.clip_model.encode_image(img, cls=self.clip_cls_eot_feature, projection=self.use_share_dim)
         else:
-            memory = self.clip_model.encode_image(img, projection=self.use_share_dim)
+            memory = self.clip_model.encode_image(img, cls=self.clip_cls_eot_feature, projection=self.use_share_dim)
 
-        return memory
+        return memory if not self.clip_cls_eot_feature else torch.unsqueeze(memory, dim=1)
 
     def visual_decode(self, tgt: torch.Tensor, memory: torch.Tensor,
                         tgt_query: Optional[Tensor] = None, tgt_query_mask: Optional[Tensor] = None,
@@ -134,10 +141,12 @@ class VL4STR(CrossEntropySystem):
         if self.freeze_language_backbone:
             with torch.no_grad():
                 text_features = self.clip_model.token_embedding(text) if self.cross_token_embeding else \
-                                    self.clip_model.encode_text(text)
+                                    self.clip_model.encode_text(text, eot=self.clip_cls_eot_feature)
         else:
             text_features = self.clip_model.token_embedding(text) if self.cross_token_embeding else \
-                                    self.clip_model.encode_text(text)        
+                                    self.clip_model.encode_text(text, eot=self.clip_cls_eot_feature)
+        if self.clip_cls_eot_feature:
+            text_features = torch.unsqueeze(text_features, dim=1)
 
         return torch.cat([image_features, text_features], dim=1)
 

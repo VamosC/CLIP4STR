@@ -4,7 +4,8 @@ defaults:
   - charset: 94_full
   - dataset: real
 
-abs_root: /PUT/YOUR/PATH/HERE
+# abs_root: /PUT/YOUR/PATH/HERE
+abs_root: /home/shuai
 
 model:
   _convert_: all
@@ -17,7 +18,7 @@ model:
   batch_size: 384
   weight_decay: 0.0
   warmup_pct: 0.075  # equivalent to 1.5 epochs of warm up
-  code_path: ${abs_root}/code/clip4str
+  code_path: ${abs_root}/code/CLIP4STR
 
 data:
   _target_: strhub.data.module.SceneTextDataModule

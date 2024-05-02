@@ -37,6 +37,15 @@ _MODELS = {
     "ViT-B/16": "https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt",
     "ViT-L/14": "https://openaipublic.azureedge.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt",
     "ViT-L/14@336px": "https://openaipublic.azureedge.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt",
+    # Checkpoints from OpenCLIP
+    "OpenCLIP-ViT-B/16": "https://huggingface.co/laion/CLIP-ViT-B-16-DataComp.XL-s13B-b90K/blob/main/open_clip_pytorch_model.bin",
+    # SHA256: 80905176486d952914c1deb3b753b8e653ab54aa4ffb14208bc5007cf7643a16
+    "OpenCLIP-ViT-L/14": "https://huggingface.co/laion/CLIP-ViT-L-14-DataComp.XL-s13B-b90K/blob/main/open_clip_pytorch_model.bin",
+    # SHA256: 6509f07e6fc0da68f8e1ee881bf90803f0b053d2f7ed2013cc7c3a49ac4dd3db
+    "OpenCLIP-ViT-H/14": "https://huggingface.co/laion/CLIP-ViT-H-14-laion2B-s32B-b79K/blob/main/open_clip_pytorch_model.bin",
+    # SHA256: 9a78ef8e8c73fd0df621682e7a8e8eb36c6916cb3c16b291a082ecd52ab79cc4
+    "appleDFN5B-CLIP-ViT-H-14": "https://huggingface.co/apple/DFN5B-CLIP-ViT-H-14/blob/main/open_clip_pytorch_model.bin",
+    # SHA256: d67de50faa7f3ddce52fbab4f4656b04686a0bb15c26ebd0144d375cfa08b8ae
 }
 
 
@@ -125,18 +134,22 @@ def load(name: str, device: Union[str, torch.device] = "cuda" if torch.cuda.is_a
         raise RuntimeError(f"Model {name} not found; available models = {available_models()}")
     print("loading checkpoint from {}".format(model_path))
 
-    try:
-        with open(model_path, 'rb') as opened_file:
-            # loading JIT archive
-            model = torch.jit.load(opened_file, map_location=device if jit else "cpu").eval()
-            state_dict = None
-    except RuntimeError:
-        # loading saved state dict
-        if jit:
-            warnings.warn(f"File {model_path} is not a JIT archive. Loading as a state dict instead")
-            jit = False
-        # state_dict = torch.load(opened_file, map_location="cpu")
-        state_dict = torch.load(model_path, map_location="cpu")['model']
+    if "OpenCLIP" in model_path or "open_clip" in model_path or "apple" in model_path or "laion" in model_path:
+        # take care of the pre-trained weights from OpenCLIP https://github.com/mlfoundations/open_clip
+        state_dict = torch.load(model_path, map_location="cpu")
+    else:
+        try:
+            with open(model_path, 'rb') as opened_file:
+                # loading JIT archive
+                model = torch.jit.load(opened_file, map_location=device if jit else "cpu").eval()
+                state_dict = None
+        except RuntimeError:
+            # loading saved state dict
+            if jit:
+                warnings.warn(f"File {model_path} is not a JIT archive. Loading as a state dict instead")
+                jit = False
+            # state_dict = torch.load(opened_file, map_location="cpu")
+            state_dict = torch.load(model_path, map_location="cpu")['model']
 
     if not jit:
         model = build_model(state_dict or model.state_dict()).to(device)
