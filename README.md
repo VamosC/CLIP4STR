@@ -1,5 +1,12 @@
 # CLIP4STR
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-iiit5k)](https://paperswithcode.com/sota/scene-text-recognition-on-iiit5k?p=clip4str-a-simple-baseline-for-scene-text-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-svt)](https://paperswithcode.com/sota/scene-text-recognition-on-svt?p=clip4str-a-simple-baseline-for-scene-text-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-icdar2013)](https://paperswithcode.com/sota/scene-text-recognition-on-icdar2013?p=clip4str-a-simple-baseline-for-scene-text-1)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-icdar2015)](https://paperswithcode.com/sota/scene-text-recognition-on-icdar2015?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-svtp)](https://paperswithcode.com/sota/scene-text-recognition-on-svtp?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-cute80)](https://paperswithcode.com/sota/scene-text-recognition-on-cute80?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-host)](https://paperswithcode.com/sota/scene-text-recognition-on-host?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-wost)](https://paperswithcode.com/sota/scene-text-recognition-on-wost?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-coco-text)](https://paperswithcode.com/sota/scene-text-recognition-on-coco-text?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-ic19-art)](https://paperswithcode.com/sota/scene-text-recognition-on-ic19-art?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-uber-text)](https://paperswithcode.com/sota/scene-text-recognition-on-uber-text?p=clip4str-a-simple-baseline-for-scene-text-1)
+
+
+
 This is a dedicated re-implementation of [CLIP4STR: A Simple Baseline for Scene Text Recognition with Pre-trained Vision-Language Model
 ](https://arxiv.org/abs/2305.14014).
 
@@ -133,22 +140,24 @@ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cud
 
 ### CLIP4STR pre-trained on DataComp-1B, LAION-2B, and DFN-5B
 
-| Method     | Pre-train data | Train data | IIIT5K | SVT   | IC13  | IC15  | IC15  | SVTP  | CUTE  | HOST  | WOST  |
+All models are trained on RBU(6.5M).
+
+| Method     | Pre-train | Train | IIIT5K | SVT   | IC13  | IC15  | IC15  | SVTP  | CUTE  | HOST  | WOST  |
 |------------|------------|------------|--------|-------|-------|-------|-------|-------|-------|-------|-------|
 |            |            |            | 3,000  | 647   | 1,015 | 1,811 | 2,077 | 645   | 288   | 2,416 | 2,416 | 
-| CLIP4STR-B  | DataComp-1B | RBU(6.5M) | 99.5  | 98.3 | 98.6 | 91.4 | 91.1 | 98.0 | 99.0 | 79.3 | 88.8 | 
-| CLIP4STR-L  | DataComp-1B | RBU(6.5M) | 99.6  | 98.6 | 99.0 | 91.9 | 91.4 | 98.1 | 99.7 | 81.1 | 90.6 |
-| CLIP4STR-H  | LAION-2B | RBU(6.5M) | 99.7 | 98.6 | 98.9 |	91.6	| 91.1	| 98.5	| 99.7	| 80.6	| 90.0 |
-| CLIP4STR-H  | DFN-5B | RBU(6.5M) | 99.5	| 99.1	| 98.9	| 91.7	| 91.0	| 98.0	| 99.0	| 82.6	| 90.9 |
+| CLIP4STR-B  | DC-1B | RBU | 99.5  | 98.3 | 98.6 | 91.4 | 91.1 | 98.0 | 99.0 | 79.3 | 88.8 | 
+| CLIP4STR-L  | DC-1B | RBU | 99.6  | 98.6 | 99.0 | 91.9 | 91.4 | 98.1 | 99.7 | 81.1 | 90.6 |
+| CLIP4STR-H  | LAION-2B | RBU | 99.7 | 98.6 | 98.9 |	91.6	| 91.1	| 98.5	| 99.7	| 80.6	| 90.0 |
+| CLIP4STR-H  | DFN-5B | RBU | 99.5	| 99.1	| 98.9	| 91.7	| 91.0	| 98.0	| 99.0	| 82.6	| 90.9 |
 
 
-| Method     | Pre-train data | Train data | COCO   | ArT    | Uber   | log | Checkpoint |
+| Method     | Pre-train | Train | COCO   | ArT    | Uber   | log | Checkpoint |
 |------------|----------------|------------|--------|--------|--------|-----|--------|
 |            |                |            | 9,825  | 35,149 | 80,551 |     |        |
-|CLIP4STR-B  | DataComp-1B    | RBU(6.5M)  | 81.3  | 85.8  | 92.1  | [6e9fe947ac_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_base_6e9fe947ac_log.txt)    | [6e9fe947ac](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_base_6e9fe947ac.pt), [BaiduYun](https://pan.baidu.com/s/1KCmM4K16nslPoZbUPxIfnQ?pwd=g6z6) |
-|CLIP4STR-L  | DataComp-1B    | RBU(6.5M)  | 82.7  |86.4  | 92.2  | [3c9d881b88_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_large_3c9d881b88_log.txt)    | [3c9d881b88](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_large_3c9d881b88.pt), [BaiduYun](https://pan.baidu.com/s/1V1Wd114MUhszdPwQyD85DA?pwd=4q74) |
-|CLIP4STR-H  | LAION-2B       | RBU(6.5M)  | 82.5  | 86.2  | 91.2 | [5eef9f86e2_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_5eef9f86e2_log.txt)    | [5eef9f86e2](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_5eef9f86e2.pt), [BaiduYun](https://pan.baidu.com/s/1RFOdzHFEeDOs5EC2F3u3Ng?pwd=ex5w) |
-|CLIP4STR-H  | DFN-5B         | RBU(6.5M)  | 83.0  | 86.4 | 91.7  | [3e942729b1_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_3e942729b1_log.txt)    | [3e942729b1](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_3e942729b1.pt), [BaiduYun](https://pan.baidu.com/s/1duQnOsKZcOF3oiGlsdkBHw?pwd=e2ty) |
+|CLIP4STR-B  | DC-1B    | RBU  | 81.3  | 85.8  | 92.1  | [6e9fe947ac_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_base_6e9fe947ac_log.txt)    | [6e9fe947ac](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_base_6e9fe947ac.pt), [BaiduYun](https://pan.baidu.com/s/1KCmM4K16nslPoZbUPxIfnQ?pwd=g6z6) |
+|CLIP4STR-L  | DC-1B    | RBU  | 82.7  |86.4  | 92.2  | [3c9d881b88_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_large_3c9d881b88_log.txt)    | [3c9d881b88](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_large_3c9d881b88.pt), [BaiduYun](https://pan.baidu.com/s/1V1Wd114MUhszdPwQyD85DA?pwd=4q74) |
+|CLIP4STR-H  | LAION-2B       | RBU  | 82.5  | 86.2  | 91.2 | [5eef9f86e2_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_5eef9f86e2_log.txt)    | [5eef9f86e2](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_5eef9f86e2.pt), [BaiduYun](https://pan.baidu.com/s/1RFOdzHFEeDOs5EC2F3u3Ng?pwd=ex5w) |
+|CLIP4STR-H  | DFN-5B         | RBU  | 83.0  | 86.4 | 91.7  | [3e942729b1_log](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_3e942729b1_log.txt)    | [3e942729b1](https://huggingface.co/mzhaoshuai/CLIP4STR/blob/main/clip4str_huge_3e942729b1.pt), [BaiduYun](https://pan.baidu.com/s/1duQnOsKZcOF3oiGlsdkBHw?pwd=e2ty) |
 
 
 ## Training
