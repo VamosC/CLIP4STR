@@ -103,7 +103,7 @@ ${ABSOLUTE_ROOT}
 Requires `Python >= 3.8` and `PyTorch >= 1.12`.
 The following commands are tested on a Linux machine with CUDA Driver Version `525.105.17` and CUDA Version `11.3`.
 ```
-conda create --name clip4str python==3.8
+conda create --name clip4str python=3.8.5
 conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 -c pytorch
 pip install -r requirements.txt 
 ```
