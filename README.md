@@ -19,12 +19,14 @@ This is a dedicated re-implementation of [CLIP4STR: A Simple Baseline for Scene 
 * [Results](#Results)
 * [Training](#Training) 
 * [Inference](#Inference)
+* [FAQs](#FAQs)
 * [Citations](#Citations)
 * [Acknowledgements](#Acknowledgements)
 <!--te-->
 
 ## News
 
+- [26/12/2024] CLIP4STR will appear at TIP! The early access version is available at https://ieeexplore.ieee.org/document/10816351. A final version is also at https://arxiv.org/abs/2305.14014.
 - [02/05/2024] Add new CLIP4STR models pre-trained on DataComp-1B, LAION-2B, and DFN-5B. Add CLIP4STR models trained on RBU(6.5M).
 
 
@@ -209,15 +211,28 @@ Output:
 image_1576.jpeg: Chicken
 ```
 
+## FAQs
+
+### CLIP4STR in other languages
+
+Please check https://github.com/VamosC/CLIP4STR/issues/1, https://github.com/VamosC/CLIP4STR/issues/20, https://github.com/VamosC/CLIP4STR/issues/23.
+
+If you have implemented CLIP4STR in other languages, it would be great if you could add a link to your repo here.
+
+### Code for producing attention map in CLIP4STR paper
+
+Please check https://github.com/VamosC/CLIP4STR/issues/6.
+
 
 ## Citations
 ```
-@article{zhao2023clip4str,
-  title={Clip4str: A simple baseline for scene text recognition with pre-trained vision-language model},
+@article{zhao2024clip4str,
   author={Zhao, Shuai and Quan, Ruijie and Zhu, Linchao and Yang, Yi},
-  journal={arXiv preprint arXiv:2305.14014},
-  year={2023}
-}
+  journal={IEEE Transactions on Image Processing}, 
+  title={CLIP4STR: A Simple Baseline for Scene Text Recognition with Pre-trained Vision-Language Model}, 
+  year={2024},
+  pages={1-1},
+  doi={10.1109/TIP.2024.3512354}}
 ```
 
 ## Acknowledgements
