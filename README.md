@@ -201,7 +201,7 @@ bash scripts/test.sh 0 clip4str_base16x16_d70bde1f2d.ckpt
 
 If you want to read characters from an image, try:
 ```
-bash test.sh {gpu_id} {subpath_of_ckpt} {image_folder_path}
+bash read.sh {gpu_id} {subpath_of_ckpt} {image_folder_path}
 ```
 For example,
 ```
