@@ -1,10 +1,11 @@
 # CLIP4STR
 
+<!--
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-iiit5k)](https://paperswithcode.com/sota/scene-text-recognition-on-iiit5k?p=clip4str-a-simple-baseline-for-scene-text-1)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-svt)](https://paperswithcode.com/sota/scene-text-recognition-on-svt?p=clip4str-a-simple-baseline-for-scene-text-1)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-icdar2013)](https://paperswithcode.com/sota/scene-text-recognition-on-icdar2013?p=clip4str-a-simple-baseline-for-scene-text-1)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-icdar2015)](https://paperswithcode.com/sota/scene-text-recognition-on-icdar2015?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-svtp)](https://paperswithcode.com/sota/scene-text-recognition-on-svtp?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-cute80)](https://paperswithcode.com/sota/scene-text-recognition-on-cute80?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-host)](https://paperswithcode.com/sota/scene-text-recognition-on-host?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-wost)](https://paperswithcode.com/sota/scene-text-recognition-on-wost?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-coco-text)](https://paperswithcode.com/sota/scene-text-recognition-on-coco-text?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-ic19-art)](https://paperswithcode.com/sota/scene-text-recognition-on-ic19-art?p=clip4str-a-simple-baseline-for-scene-text-1)[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip4str-a-simple-baseline-for-scene-text-1/scene-text-recognition-on-uber-text)](https://paperswithcode.com/sota/scene-text-recognition-on-uber-text?p=clip4str-a-simple-baseline-for-scene-text-1)
-
+-->
 
 
 This is a dedicated re-implementation of [CLIP4STR: A Simple Baseline for Scene Text Recognition with Pre-trained Vision-Language Model
@@ -231,8 +232,10 @@ Please check https://github.com/VamosC/CLIP4STR/issues/6.
   journal={IEEE Transactions on Image Processing}, 
   title={CLIP4STR: A Simple Baseline for Scene Text Recognition with Pre-trained Vision-Language Model}, 
   year={2024},
-  pages={1-1},
-  doi={10.1109/TIP.2024.3512354}}
+  volume={33},
+  pages={6893-6904},
+  doi={10.1109/TIP.2024.3512354}
+}
 ```
 
 ## Acknowledgements
@@ -249,3 +252,4 @@ Please check https://github.com/VamosC/CLIP4STR/issues/6.
 * [VamosC/CapHuman](https://github.com/VamosC/CapHuman)
 * Dr. Xiaohan Wang from Stanford University.
 <!--te-->
+
